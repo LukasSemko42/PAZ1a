@@ -64,6 +64,7 @@ public class ExamTurtle extends Turtle {
 
     public boolean orderedLetters(String s){
         String str = s.replaceAll("\\s+", "");
+        str = str.replaceAll("_", "");
         char[] chars = str.toCharArray();
         for (int i = 0; i < str.length()-1; i++) {
             char a=chars[i];
