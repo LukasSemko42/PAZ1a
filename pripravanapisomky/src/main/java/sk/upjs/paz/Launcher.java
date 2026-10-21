@@ -6,15 +6,10 @@ public class Launcher {
 
 	public static void main(String[] args) {
 		WinPane sandbox = new WinPane();
-
-		SmartTurtle franklin = new SmartTurtle();
 		ExamTurtle exam = new ExamTurtle();
-		sandbox.add(franklin);
-		sandbox.add(exam);
-
 		ObjectInspector oi = new ObjectInspector();
-		oi.inspect(franklin);
-		oi.inspect(sandbox);
+
+		sandbox.add(exam);
 		oi.inspect(exam);
 	}
 }
