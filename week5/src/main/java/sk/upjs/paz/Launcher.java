@@ -6,7 +6,7 @@ public class Launcher {
 
 	public static void main(String[] args) {
 		ObjectInspector oi = new ObjectInspector();
-		GrafickyEditor pane = new GrafickyEditor();
+		Korytnackovo pane = new Korytnackovo();
 		oi.inspect(pane);
 	}
 }
