@@ -119,4 +119,17 @@ public class Korytnackovo extends WinPane {
         }
         return length;
     }
+
+    public void drag(int x, int y){
+        for (int i = 0; i < korytnacky.length; i++) {
+            if (korytnacky[i].distanceTo(x,y)<=10){
+                korytnacky[i].setPosition(x,y);
+                break;
+            }
+        }
+    }
+
+    protected void onMouseDragged(int x,int y, MouseEvent detail){
+        drag(x,y);
+    }
 }
