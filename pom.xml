@@ -17,7 +17,8 @@
         <module>week4</module>
         <module>TestovaciaUloha</module>
         <module>week5</module>
-    </modules>
+		<module>Zadanie5</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
