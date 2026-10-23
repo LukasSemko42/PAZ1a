@@ -1,6 +1,7 @@
 package sk.upjs.paz;
 
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 
 import sk.upjs.jpaz2.*;
 
@@ -67,31 +68,29 @@ public class KorytnaciSvet extends WinPane {
         
         
         public double explozia(double x, double y, double sila) {
+                double dlzka=0;
 
                 //odstrelime korytnacky
-
                 for (int i = 0; i < korytnacky.length; i++) {
                         double d=korytnacky[i].distanceTo(x,y);
+
+                        Point2D startPos=korytnacky[i].getPosition();
 
                         korytnacky[i].setDirectionTowards(x,y);
                         korytnacky[i].turn(180);
                         korytnacky[i].penUp();
                         korytnacky[i].step(Math.pow(sila,2)/Math.pow(d,4));
-                }
 
-                //najdeme max vzdialenost nejakej korytnacky
-
-                double dlzka=0;
-                for (int i = 0; i < korytnacky.length; i++) {
-                        if (korytnacky[i].distanceTo(x,y) > dlzka) {
-                                dlzka=korytnacky[i].distanceTo(x,y);
+                        //najdeme max vzdialenost
+                        if (korytnacky[i].distanceTo(startPos) > dlzka) {
+                                dlzka=korytnacky[i].distanceTo(startPos);
                         }
                 }
                 return dlzka;
         }
         
         public double casDoPrichodu(double x, double y) {
-            int cas=Integer.MAX_VALUE;
+            double cas=Double.MAX_VALUE;
             double uhol=0;
             double vzdialenost=0;
 
@@ -100,9 +99,8 @@ public class KorytnaciSvet extends WinPane {
                     double natocenieKorytnackyPred=korytnacky[i].getDirection();
                     korytnacky[i].setDirectionTowards(x,y);
                     double natocenieKorytnackyPo=korytnacky[i].getDirection();
-                    if (natocenieKorytnackyPo>180){
-                            uhol=Math.abs(360-natocenieKorytnackyPo);
-                    } else uhol=Math.abs(natocenieKorytnackyPo-natocenieKorytnackyPred);
+                    double rozdiel = Math.abs(natocenieKorytnackyPo - natocenieKorytnackyPred);
+                    uhol = Math.min(rozdiel, 360 - rozdiel);
 
 
                     //vratime naspat uhol otocenia
@@ -114,7 +112,7 @@ public class KorytnaciSvet extends WinPane {
                     //nastavime novy cas ak je mensi nez predosly
                     double novyCas=vzdialenost+uhol;
                     if (novyCas<cas){
-                            cas=(int)novyCas;
+                            cas=novyCas;
                     }
             }
             return cas;
