@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Zadanie5</artifactId>
+    <artifactId>Zadanie5_cast2</artifactId>
     <packaging>jar</packaging>
 
-    <name>Zadanie5</name>
+    <name>Zadanie5_cast2</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,7 +59,7 @@
                                 </transformer>
                             </transformers>
                             <minimizeJar>true</minimizeJar>
-                            <finalName>Zadanie5</finalName>
+                            <finalName>Zadanie5_cast2</finalName>
                         </configuration>
                     </execution>
                 </executions>
