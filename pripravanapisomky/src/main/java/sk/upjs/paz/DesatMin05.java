@@ -46,15 +46,17 @@ public class DesatMin05 extends WinPane {
                 yMin=korytnacky[index].getY()-size/2;
                 yMax=yMin+size;
 
-            for (Turtle turtle : korytnacky) {
-                if (turtle != korytnacky[index]) {
-                    double xKor = turtle.getX();
-                    double yKor = turtle.getY();
-                    if ((xKor >= xMin && xKor <= xMax) && (yKor >= yMin && yKor <= yMax)) {
-                        count++;
-                    }
+                //hladam korytnacku ktora splna podmienky
+                for (Turtle turtle : korytnacky) {
+                        //podmienka nech neberiem do uvahy povodnu index korytnacku
+                        if (turtle != korytnacky[index]) {
+                                double xKor = turtle.getX();
+                                double yKor = turtle.getY();
+                                if ((xKor >= xMin && xKor <= xMax) && (yKor >= yMin && yKor <= yMax)) {
+                                        count++;
+                                }
+                        }
                 }
-            }
-            return count;
+                return count;
         }
 }
