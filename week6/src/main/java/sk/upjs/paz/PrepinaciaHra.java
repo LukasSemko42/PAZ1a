@@ -2,31 +2,28 @@ package sk.upjs.paz;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
 
 import sk.upjs.jpaz2.*;
 
-
 public class PrepinaciaHra extends WinPane {
-    /**
-     * Policka hracej dosky
-     */
-    private boolean[][] doska = new boolean[6][6];
-
-    /**
-     * Indikuje, ci hra bezi (hra konci, ked sa dosiahlo vyherne rozlozenie)
-     */
+    private int[][] doska = new int[6][6];
     private boolean hraBezi = true;
 
     public PrepinaciaHra() {
         this.kresliMriezku();
+        this.randomStart();
         this.zamiesaj(30);
         this.kresliDosku();
     }
 
-    /**
-     * Nakresli mriezku
-     */
+    public void randomStart() {
+        for (int i = 0; i < doska.length; i++) {
+            for (int j = 0; j < doska[i].length; j++) {
+                doska[i][j] = (Math.random() <= 0.5) ? 0 : 1;
+            }
+        }
+    }
+
     public void kresliMriezku() {
         Turtle k = new Turtle();
         this.add(k);
@@ -44,54 +41,69 @@ public class PrepinaciaHra extends WinPane {
         this.remove(k);
     }
 
-    /**
-     * Nakresli farebne kamene na zaklade obsahu policok
-     * v this.doska
-     */
     public void kresliDosku() {
-        // ???
+        Turtle k = new Turtle();
+        this.add(k);
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (doska[i][j] == 0) {
+                    k.setFillColor(Color.red);
+                } else {
+                    k.setFillColor(Color.blue);
+                }
+                k.setPosition(i * 50 + 25, j * 50 + 25);
+                k.dot(22);
+            }
+        }
+        this.remove(k);
     }
 
-    /**
-     * Overi, ci riadok r a stlpec s su platne suradnice
-     */
     public boolean dobraSuradnica(int r, int s) {
         return (r >= 0) && (r < 6) && (s >= 0) && (s < 6);
     }
 
-    /**
-     * Zrealizuje tah, kedy bol zatlaceny prepinac na policku
-     * v riadku r a stlpci s
-     */
     public void tah(int r, int s) {
         int[][] smery = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
-        // ???
-    }
-
-    /**
-     * Vytvori startovacie rozlozenie kamenov tak, ze spravi
-     * zadany pocet nahodnych prepnuti (tahov)
-     */
-    public void zamiesaj(int pocetMiesani) {
-        // ???
-    }
-
-    /**
-     * Vrati, ci v aktualnom stave policok je kresliaca plocha
-     * jednofarebna
-     */
-    public boolean jeVyherna() {
-        for (int i = 0; i < doska.length; i++) {
-            for (int j = 0; j < doska[i].length; j++) {
-                if (!doska[i][j]) return false;
+        if (hraBezi && dobraSuradnica(r, s)) {
+            for (int i = 0; i < 4; i++) {
+                int nx = r + smery[i][0];
+                int ny = s + smery[i][1];
+                if (dobraSuradnica(nx, ny)) {
+                    if (doska[nx][ny] == 0) {
+                        doska[nx][ny] = 1;
+                    } else {
+                        doska[nx][ny] = 0;
+                    }
+                }
             }
         }
+    }
+
+    public void zamiesaj(int pocetMiesani) {
+        for (int i = 0; i < pocetMiesani; i++) {
+            tah((int) (Math.random() * 6), (int) (Math.random() * 6));
+        }
+    }
+
+    public boolean jeVyherna() {
+        int vzor = doska[0][0];
+        for (int i = 0; i < doska.length; i++) {
+            for (int j = 0; j < doska[i].length; j++) {
+                if (doska[i][j] != vzor) {
+                    return false;
+                }
+            }
+        }
+        this.hraBezi = false;
         return true;
     }
 
     @Override
     protected void onMouseClicked(int x, int y, MouseEvent detail) {
-        // ???
+        if (hraBezi) {
+            tah(x / 50, y / 50);
+            kresliDosku();
+            jeVyherna();
+        }
     }
 }
