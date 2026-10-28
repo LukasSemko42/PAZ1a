@@ -14,7 +14,6 @@ public class GrafickyEditor extends WinPane {
     }
 
     public void moveTurtle(int x, int y) {
-        k.penUp();
         k.setPosition(x, y);
     }
 

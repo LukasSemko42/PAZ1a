@@ -19,7 +19,9 @@
         <module>week5</module>
 		<module>Zadanie5_cast1</module>
 		<module>Zadanie5_cast2</module>
-	</modules>
+        <module>MidTerm25_26_stvrtok</module>
+        <module>week6</module>
+    </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

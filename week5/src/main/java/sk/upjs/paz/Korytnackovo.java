@@ -125,6 +125,7 @@ public class Korytnackovo extends WinPane {
             if (korytnacky[i].distanceTo(x,y)<=10){
                 korytnacky[i].setPosition(x,y);
                 break;
+
             }
         }
     }
