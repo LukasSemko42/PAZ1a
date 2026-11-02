@@ -11,7 +11,7 @@ public class MidtermPane extends WinPane {
             korytnacky[i]=new Turtle();
             this.add(korytnacky[i]);
             korytnacky[i].setPosition(this.getWidth()*Math.random(),this.getHeight()*Math.random());
-            korytnacky[i].setDirection((int)(Math.random()*7)*45);
+            korytnacky[i].setDirection((int)(Math.random()*8)*45);
         }
     }
 
@@ -44,11 +44,11 @@ public class MidtermPane extends WinPane {
         int maxIndex=0;
 
         for (int i = 0; i < count.length; i++) {
-            if (count[i]>maxIndex){
+            if (count[i]>count[maxIndex]){
                 maxIndex=i;
             }
         }
 
-        return count[maxIndex]*45;
+        return maxIndex*45;
     }
 }
