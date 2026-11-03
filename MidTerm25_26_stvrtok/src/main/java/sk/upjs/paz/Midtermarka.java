@@ -87,7 +87,9 @@ public class Midtermarka extends Turtle {
         }
 
         // Ak sme úspešne prešli všetky znaky v s1, našli sme celú podpostupnosť
-        return indexS1 == s1.length();
+        if (indexS1 == s1.length()){
+            return true;
+        } else return false;
     }
 
 }
