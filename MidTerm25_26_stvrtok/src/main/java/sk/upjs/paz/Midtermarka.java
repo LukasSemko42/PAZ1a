@@ -46,48 +46,48 @@ public class Midtermarka extends Turtle {
         this.turn(90);
     }
 
-    public int goldbach(int n) {
-        if (n <= 2 || n % 2 != 0) {
-            return 0;
-        }
-
-        int maxPrime = 0;
-        for (int i = 1; i <= n; i++) {
-            if (isPrime(i) && isPrime(n - i)) {
-                int currentMax = Math.max(i, n - i);
-                if (currentMax > maxPrime) {
-                    maxPrime = currentMax;
-                }
-            }
-        }
-        return maxPrime;
-    }
-
-    public boolean isPrime(int n) {
-        int count = 0;
-        if (n < 1) {
-            return false;
-        }
-        for (int i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                count++;
-            }
-        }
-        if (count == 2) {
-            return true;
-        } else return false;
-    }
+//    public int goldbach(int n){
+//        if (n<=2 || n%2!=0){
+//            return 0;
+//        }
+//        int p,q=0;
+//        for (int i = 1; i <= n; i++) {
+//
+//        }
+//    }
+//
+//    public boolean isPrime(int n){
+//        int count=0;
+//        if (n<1){
+//            return false;
+//        }
+//        for (int i = 1; i <=n; i++) {
+//            if (n%i==0){
+//                count++;
+//            }
+//        }
+//        if (count==2){
+//            return true;
+//        } else return false;
+//    }
 
     public boolean subsequence(String s1, String s2) {
+        // Indexy pre prechádzanie oboch reťazcov
         int indexS1 = 0;
         int indexS2 = 0;
 
+        // Prechádzame reťazec s2 a hľadáme v ňom znaky z s1
         while (indexS1 < s1.length() && indexS2 < s2.length()) {
+            // Ak sa aktuálne znaky zhodujú, posunieme sa na ďalší hľadaný znak v s1
             if (s1.charAt(indexS1) == s2.charAt(indexS2)) {
                 indexS1++;
             }
+            // V reťazci s2 sa posúvame v každom kroku
             indexS2++;
         }
+
+        // Ak sme úspešne prešli všetky znaky v s1, našli sme celú podpostupnosť
         return indexS1 == s1.length();
     }
+
 }
