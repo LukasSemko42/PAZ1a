@@ -24,7 +24,8 @@ public class Launcher {
 		System.out.println("4:");
 		komandant.punishment(new File("C:\\Users\\Lukas_S\\IdeaProjects\\PAZ\\week7\\src\\main" +
 				"\\resources\\dir01\\tresty.txt"),"zlobil",5);
-		System.out.println("Done");
+		System.out.println("Done"+"\n");
 
+		Clickpane pane = new Clickpane();
 	}
 }
