@@ -37,3 +37,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/week7/src/main/resources/coords.txt

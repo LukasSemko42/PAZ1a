@@ -27,5 +27,9 @@ public class Launcher {
 		System.out.println("Done"+"\n");
 
 		Clickpane pane = new Clickpane();
+		TextTurtle text = new TextTurtle();
+
+		System.out.println(text.average(new File("C:\\Users\\Lukas_S\\IdeaProjects\\PAZ" +
+				"\\week7\\src\\main\\resources\\average.txt")));
 	}
 }
