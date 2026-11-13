@@ -31,5 +31,9 @@ public class Launcher {
 
 		System.out.println(text.average(new File("C:\\Users\\Lukas_S\\IdeaProjects\\PAZ" +
 				"\\week7\\src\\main\\resources\\average.txt")));
+
+		ControlledTurtle control = new ControlledTurtle();
+		pane.add(control);
+		control.executeFile(new File("C:\\Users\\Lukas_S\\IdeaProjects\\PAZ\\week7\\src\\main\\resources\\input.txt"));
 	}
 }
