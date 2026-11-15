@@ -2,6 +2,8 @@ package sk.upjs.paz;
 
 import sk.upjs.jpaz2.*;
 
+import java.io.File;
+
 public class Launcher {
 
 	public static void main(String[] args) {
