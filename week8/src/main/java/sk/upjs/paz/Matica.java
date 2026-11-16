@@ -17,14 +17,10 @@ public class Matica {
         this.pocetRiadkov=pocetRiadkov;
         this.pocetStlpcov=pocetStlpcov;
         this.pole= new double[pocetRiadkov][pocetStlpcov];
-        try {
-            for (int i = 0; i < pocetRiadkov; i++) {
-                for (int j = 0; j < pocetStlpcov; j++) {
-                    this.pole[i][j]=0;
-                }
+        for (int i = 0; i < pocetRiadkov; i++) {
+            for (int j = 0; j < pocetStlpcov; j++) {
+                this.pole[i][j]=0;
             }
-        } catch (NullPointerException e){
-            System.err.println(e.getMessage());
         }
     }
 
@@ -39,11 +35,13 @@ public class Matica {
             sc.useLocale(java.util.Locale.US);
             if (sc.hasNextLine()){
                 String riadok = sc.nextLine();
+                pocetRiadkov++;
                 String[] obsahRiadku=riadok.split(" ");
                 pocetStlpcov=obsahRiadku.length;
             }
             while(sc.hasNextLine()){
                 pocetRiadkov++;
+                sc.nextLine();
             }
             this.pocetRiadkov=pocetRiadkov;
             this.pocetStlpcov=pocetStlpcov;
@@ -85,7 +83,7 @@ public class Matica {
      * zadanu hodnotu.
      */
     public void nastav(int riadok, int stlpec, double hodnota) {
-        if (riadok<=pocetRiadkov && stlpec<=pocetStlpcov){
+        if (riadok<=pocetRiadkov-1 && stlpec<=pocetStlpcov-1){
             this.pole[riadok][stlpec]=hodnota;
         } else System.err.println("Taky riadok/stlpec neexistuje");
     }
@@ -95,7 +93,7 @@ public class Matica {
      * a stlpci.
      */
     public double vrat(int riadok, int stlpec) {
-        if (riadok<=pocetRiadkov && stlpec<=pocetStlpcov){
+        if (riadok<=pocetRiadkov-1 && stlpec<=pocetStlpcov-1){
             return this.pole[riadok][stlpec];
         } else {
             System.err.println("Taky riadok/stlpec neexistuje");
