@@ -26,7 +26,8 @@
         <module>MidTerm24_25_streda</module>
         <module>week7</module>
         <module>week8</module>
-    </modules>
+		<module>week9</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
