@@ -8,6 +8,7 @@ public class Obdlznik extends Tvar{
     private double b;
 
     public Obdlznik(double a, double b) {
+        super(Math.random()*300,Math.random()*300);
         this.a = a;
         this.b = b;
     }
@@ -15,7 +16,7 @@ public class Obdlznik extends Tvar{
     public void vykresliSa(WinPane pane){
         Turtle t = new Turtle();
         pane.add(t);
-        t.setPosition(super.x,super.y);
+        t.setPosition(super.getX(),super.getY());
         t.penUp();
         t.setDirection(-90);
         t.step(a/2);
@@ -32,8 +33,9 @@ public class Obdlznik extends Tvar{
         t.step(b/2);
         pane.remove(t);
     }
-    public boolean jeVnutornyBod(double x, double y){
-        return x>=super.x && x<=super.x && y>=super.y && y<=super.y;
+    public boolean jeVnutornyBod(double x, double y) {
+        return x >= getX() - a / 2 && x <= getX() + a / 2
+                && y >= getY() - b / 2 && y <= getY() + b / 2;
     }
 }
 
